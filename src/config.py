@@ -23,9 +23,6 @@ This approach centralizes configuration management, making the application easie
 
 """
 
-__author__ = "Utkarsh Raj"
-__version__ = "1.0.0"
-
 
 # Define server settings
 SERVER_HOST = "0.0.0.0"  # Make 0.0.0.0 to allow access from other devices
