@@ -1,10 +1,3 @@
----
-name: ES Guidelines for Lab report
-date: 2025-05-22
-tags:
-  - quicknote
-  - work
----
 # Guideline for Lab Reports
 - The report should be a single document file covering the complete exercise
 - Use the cover sheet report template provided by in Moodle
