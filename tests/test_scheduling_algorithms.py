@@ -145,7 +145,8 @@ def test_algorithm_correctness(filename, algorithm):
     for task_id, actual_start_time in actual_schedule.items():
         expected_start_time = expected_schedule.get(task_id)
         assert actual_start_time == expected_start_time, \
-            f"Test_file {filename}, task {task_id}: start_time {actual_start_time}, Expected start_time {expected_start_time}"
+            f"Test_file {filename}, task {task_id}: start_time {
+                actual_start_time}, Expected start_time {expected_start_time}"
 
 
 @pytest.mark.parametrize("filename, algorithm", test_cases)
@@ -167,54 +168,3 @@ def test_missed_deadline(filename, algorithm):
     # print(f'Expected missed deadline: {expected_missed_deadline}')
 
     assert actual_missed_deadline == expected_missed_deadline,  f"missed deadlines do not match for {result['name']}"
-
-# @pytest.mark.parametrize("filename, algorithm", test_cases_multinode)
-# def test_dependency_multinode(filename, algorithm):
-#     """Test that task dependencies are respected across nodes in multi-node scenarios.
-#     This test is only applicable to multi-node scheduling algorithms with communication delays."""
-#     result, application_model, platform_model = load_and_schedule(filename, algorithm)
-#
-#     tasks = application_model["tasks"]
-#     messages = application_model["messages"]
-#
-#     application_graph = nx.DiGraph()
-#
-#     for task in tasks:
-#         application_graph.add_node(task["id"], task_data=task)
-#
-#     for message in messages:
-#         sender = message["sender"]
-#         receiver = message["receiver"]
-#         application_graph.add_edge(sender, receiver, message_data=message)
-#
-#     platform_graph = nx.Graph()
-#
-#     for node in platform_model["nodes"]:
-#         platform_graph.add_node(node["id"], type=node["type"])
-#
-#     for link in platform_model["links"]:
-#         platform_graph.add_edge(link["start_node"], link["end_node"], weight=link["link_delay"])
-#
-#     shortest_paths = dict(nx.all_pairs_dijkstra_path_length(platform_graph, weight='weight'))
-#
-#     for task in result["schedule"]:
-#         start_time = task["start_time"]
-#         task_id = task["task_id"]
-#         current_node = task["node_id"]
-#         predecessors = [
-#             msg["sender"]
-#             for msg in application_model["messages"]
-#             if msg["receiver"] == task_id
-#         ]
-#
-#         for pred_id in predecessors:
-#             pred_task = next(t for t in result["schedule"] if t["task_id"] == pred_id)
-#             pred_node = pred_task["node_id"]
-#             pred_end_time = pred_task["end_time"]
-#
-#             communication_delay = shortest_paths[pred_node][current_node]
-#             earliest_start_time = pred_end_time + communication_delay
-#
-#             assert start_time >= earliest_start_time, \
-#                 f'Task {task_id} starts before predecessor' +\
-#                 f'{pred_id} ends considering communication delay in {result["name"]}'
