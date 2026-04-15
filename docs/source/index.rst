@@ -5,7 +5,9 @@ Welcome to Embedded Systems Lab!
   :maxdepth: 2
   :caption: Contents
   
+  introduction-to-python.md
   task_sheet.md
+  graph_theory.md
   README.md
   schedule-visualization-frontend.md
   scheduling_algorithms.md
