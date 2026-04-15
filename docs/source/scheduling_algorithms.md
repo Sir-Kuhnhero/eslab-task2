@@ -266,8 +266,7 @@ The Earliest Deadline First (EDF) algorithm is used to schedule tasks on a singl
 
 - If a task's execution is anticipated to exceed its deadline, it is marked as a missed deadline. If a task’s end time exceeds its deadline, it is marked as a miss, and all dependent successors are excluded from scheduling to preserve dependency correctness.
 
->[!Warning]
->Only add the tasks that were scheduled and missed the deadline; don't include the successors of the missed deadline tasks in the **missed_deadlines** list.
+> **Warning:** Only add the tasks that were scheduled and missed the deadline; don't include the successors of the missed deadline tasks in the **missed_deadlines** list.
 
 #### Example
 
@@ -356,8 +355,7 @@ The Latest Deadline First (LDF) scheduling algorithm for a single node prioritiz
 
 #### Execution Times
 
->[!Note]
->LDF builds the schedule backwards, so you build the schedule and then reverse it to get the actual order of execution.
+> **Note:** LDF builds the schedule backwards, so you build the schedule and then reverse it to get the actual order of execution.
 
 - Tasks are executed in the order defined by the schedule list, each starting at the earliest possible time determined by the node’s current availability and the completion of its dependent tasks.
 
@@ -365,8 +363,7 @@ The Latest Deadline First (LDF) scheduling algorithm for a single node prioritiz
 
 - If a task's execution is anticipated to exceed its deadline, it is marked as a missed deadline. If a task’s end time exceeds its deadline, it is marked as a miss, and all dependent successors are excluded from scheduling to preserve dependency correctness.
 
->[!Warning]
->Only add the tasks that were scheduled and missed the deadline; don't include the successors of the missed deadline tasks in the **missed_deadlines** list.
+> **Warning:** Only add the tasks that were scheduled and missed the deadline; don't include the successors of the missed deadline tasks in the **missed_deadlines** list.
 
 
 This method maximizes the utilization of available time before their deadlines, while allowing tasks with earlier deadlines to be handled with the flexibility provided by scheduling tasks with later deadlines first. 
